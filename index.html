@@ -1,0 +1,367 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>外来情報共有テンプレート</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ヘッダー -->
+  <header class="site-header">
+    <h1>外来情報共有テンプレート<span class="version">v4</span></h1>
+  </header>
+
+  <!-- 緊急注意バナー -->
+  <div class="emergency-banner">
+    <span class="icon">⚠️</span>
+    緊急案件はこのツールを使わず、直接口頭・電話で連絡してください。
+  </div>
+
+  <!-- メインコンテンツ -->
+  <main class="main-container">
+
+    <!-- タブ -->
+    <div class="tab-list" role="tablist">
+      <button class="tab-btn active" data-tab="admission" role="tab">入院</button>
+      <button class="tab-btn" data-tab="break" role="tab">昼休憩</button>
+      <button class="tab-btn" data-tab="timeout" role="tab">タイムアウト</button>
+    </div>
+
+    <!-- ===== 入院テンプレート ===== -->
+    <section class="tab-panel active" id="panel-admission">
+
+      <div class="card">
+        <div class="card-title">入院情報</div>
+
+        <div class="form-group">
+          <label for="adm-dept">診療科<span class="required-mark">*</span></label>
+          <input type="text" id="adm-dept" placeholder="例：内科、外科" data-required="true">
+        </div>
+
+        <div class="form-group">
+          <label for="adm-doctor">主治医<span class="required-mark">*</span></label>
+          <input type="text" id="adm-doctor" placeholder="氏名" data-required="true">
+        </div>
+
+        <div class="form-group">
+          <label for="adm-pid">患者ID<span class="required-mark">*</span></label>
+          <input type="text" id="adm-pid" placeholder="院内患者ID" data-required="true">
+        </div>
+
+        <div class="form-group">
+          <label for="adm-name">患者名<span class="required-mark">*</span></label>
+          <input type="text" id="adm-name" placeholder="氏名" data-required="true">
+        </div>
+
+        <div class="form-group">
+          <label for="adm-age">年齢<span class="required-mark">*</span></label>
+          <input type="text" id="adm-age" placeholder="例：75" data-required="true">
+        </div>
+
+        <div class="form-group">
+          <label for="adm-diagnosis">病名<span class="required-mark">*</span></label>
+          <input type="text" id="adm-diagnosis" placeholder="主病名" data-required="true">
+        </div>
+
+        <div class="form-group">
+          <label for="adm-chief">主訴<span class="required-mark">*</span></label>
+          <input type="text" id="adm-chief" placeholder="患者の主訴" data-required="true">
+        </div>
+
+        <div class="form-group">
+          <label for="adm-purpose">入院目的<span class="required-mark">*</span></label>
+          <select id="adm-purpose" data-required="true">
+            <option value="">選択してください</option>
+            <option value="精査目的">精査目的</option>
+            <option value="手術目的">手術目的</option>
+            <option value="保存療法目的（抗菌薬・補液等）">保存療法目的（抗菌薬・補液等）</option>
+            <option value="other">その他</option>
+          </select>
+          <div class="conditional-area" id="purpose-other-area">
+            <input type="text" id="adm-purpose-other" placeholder="入院目的を入力">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="adm-adl">ADL<span class="required-mark">*</span></label>
+          <select id="adm-adl" data-required="true">
+            <option value="">選択してください</option>
+            <option value="自立">自立</option>
+            <option value="一部介助">一部介助</option>
+            <option value="全介助">全介助</option>
+            <option value="車いす使用">車いす使用</option>
+            <option value="寝たきり">寝たきり</option>
+            <option value="other">その他</option>
+          </select>
+          <div class="conditional-area" id="adl-other-area">
+            <input type="text" id="adm-adl-other" placeholder="ADLの状況を入力">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="adm-cognition">認知機能<span class="required-mark">*</span></label>
+          <select id="adm-cognition" data-required="true">
+            <option value="">選択してください</option>
+            <option value="none">低下なし</option>
+            <option value="decline">低下あり</option>
+          </select>
+          <div class="conditional-area" id="cognition-detail-area">
+            <label for="adm-cognition-detail" style="font-size:13px; margin-bottom:4px; display:block;">補足（詳細）</label>
+            <input type="text" id="adm-cognition-detail" placeholder="例：HDS-R 18点、見当識障害あり">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>医療処置（任意・複数選択可）</label>
+          <div class="checkbox-group">
+            <label class="checkbox-item">
+              <input type="checkbox" class="proc-check" data-label="酸素">酸素
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" class="proc-check" data-label="点滴">点滴
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" class="proc-check" data-label="胃管・胸腔ドレーン類挿入">胃管・胸腔ドレーン類挿入
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" id="adm-proc-other" data-label="その他">その他
+            </label>
+          </div>
+          <div class="conditional-area" id="proc-other-area">
+            <input type="text" id="adm-proc-other-text" placeholder="処置内容を入力">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="adm-inputter">入力者氏名（任意）</label>
+          <input type="text" id="adm-inputter" placeholder="LINE WORKSの表示名でも可">
+        </div>
+
+        <div class="form-group">
+          <label for="adm-note">備考（任意）</label>
+          <textarea id="adm-note" placeholder="アレルギー・感染対策・その他伝達事項等"></textarea>
+        </div>
+      </div>
+
+      <!-- プレビュー -->
+      <div class="preview-card">
+        <div class="preview-label">📋 送信テキストプレビュー</div>
+        <div class="preview-text" id="preview-admission"></div>
+      </div>
+
+      <!-- ボタン -->
+      <div class="action-area">
+        <button class="btn-copy" disabled>コピー</button>
+        <button class="btn-reset">リセット</button>
+      </div>
+      <div class="copy-guide">
+        ✓ コピーしました。LINE WORKSを開き、対象のグループトークに貼り付けて送信してください。
+      </div>
+
+    </section>
+
+    <!-- ===== 昼休憩報告 ===== -->
+    <section class="tab-panel" id="panel-break">
+
+      <div class="card">
+        <div class="card-title">昼休憩報告（14:30時点）</div>
+
+        <div class="form-group">
+          <label for="brk-block">診療科・ブロック名<span class="required-mark">*</span></label>
+          <input type="text" id="brk-block" placeholder="例：外科ブロック、内科A" data-required="true">
+        </div>
+
+        <div class="form-group">
+          <label for="brk-staff">未休憩の職種・人<span class="required-mark">*</span></label>
+          <textarea id="brk-staff" placeholder="例：外来NS 2名、受付1名" data-required="true"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="brk-aid">応援要請<span class="required-mark">*</span></label>
+          <select id="brk-aid" data-required="true">
+            <option value="">選択してください</option>
+            <option value="none">応援不要</option>
+            <option value="needed">応援が必要（師長へ連絡する）</option>
+          </select>
+          <div class="conditional-area" id="brk-aid-note">
+            ⚠️ 師長へLINE WORKSで連絡してください。
+          </div>
+        </div>
+      </div>
+
+      <!-- プレビュー -->
+      <div class="preview-card">
+        <div class="preview-label">📋 送信テキストプレビュー</div>
+        <div class="preview-text" id="preview-break"></div>
+      </div>
+
+      <!-- ボタン -->
+      <div class="action-area">
+        <button class="btn-copy" disabled>コピー</button>
+        <button class="btn-reset">リセット</button>
+      </div>
+      <div class="copy-guide">
+        ✓ コピーしました。LINE WORKSを開き、対象のグループトークに貼り付けて送信してください。
+      </div>
+
+    </section>
+
+    <!-- ===== タイムアウト ===== -->
+    <section class="tab-panel" id="panel-timeout">
+
+      <div class="card">
+        <div class="card-title">ブロックリーダータイムアウト</div>
+
+        <div class="form-group">
+          <label for="tmt-dept">診療科<span class="required-mark">*</span></label>
+          <input type="text" id="tmt-dept" placeholder="診療科名" data-required="true">
+        </div>
+
+        <div class="form-group">
+          <label for="tmt-doctor">医師名<span class="required-mark">*</span></label>
+          <input type="text" id="tmt-doctor" placeholder="担当医名" data-required="true">
+        </div>
+
+        <div class="form-group">
+          <label for="tmt-remaining">診察未患者数<span class="required-mark">*</span></label>
+          <input type="number" id="tmt-remaining" placeholder="0" min="0" data-required="true">
+        </div>
+
+        <div class="form-group">
+          <label for="tmt-admneed">入院の必要な患者の有無<span class="required-mark">*</span></label>
+          <select id="tmt-admneed" data-required="true">
+            <option value="">選択してください</option>
+            <option value="yes">あり</option>
+            <option value="no">なし</option>
+          </select>
+          <div class="conditional-area" id="admneed-detail-area">
+            <div class="form-group" style="margin-top:8px;">
+              <label for="tmt-admneed-count">何人<span class="required-mark">*</span></label>
+              <input type="number" id="tmt-admneed-count" placeholder="0" min="1" max="20" style="width:80px;" data-required="true">
+            </div>
+            <div class="admneed-patient-rows"></div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="tmt-endtime">診察終了予定時刻<span class="required-mark">*</span></label>
+          <select id="tmt-endtime" data-required="true">
+            <option value="">選択してください</option>
+            <option value="14:00">14:00</option>
+            <option value="14:15">14:15</option>
+            <option value="14:30">14:30</option>
+            <option value="14:45">14:45</option>
+            <option value="15:00">15:00</option>
+            <option value="15:15">15:15</option>
+            <option value="15:30">15:30</option>
+            <option value="15:45">15:45</option>
+            <option value="16:00">16:00</option>
+            <option value="16:15">16:15</option>
+            <option value="16:30">16:30</option>
+            <option value="16:45">16:45</option>
+            <option value="17:00">17:00</option>
+            <option value="17:15">17:15</option>
+            <option value="17:30">17:30</option>
+            <option value="17:45">17:45</option>
+            <option value="18:00">18:00</option>
+            <option value="18:15">18:15</option>
+            <option value="18:30">18:30</option>
+            <option value="18:45">18:45</option>
+            <option value="19:00">19:00</option>
+            <option value="19:15">19:15</option>
+            <option value="19:30">19:30</option>
+            <option value="19:45">19:45</option>
+            <option value="20:00">20:00</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="tmt-overtime">時間外申請（任意）</label>
+          <select id="tmt-overtime">
+            <option value="none">なし</option>
+            <option value="yes">あり</option>
+          </select>
+        </div>
+
+        <!-- 時間外申請エリア -->
+        <div class="conditional-area" id="overtime-area">
+          <div class="overtime-rows">
+            <div class="overtime-row">
+              <div class="overtime-row-header">
+                <span class="overtime-row-label">申請者 1</span>
+                <button type="button" class="btn-remove-row">削除</button>
+              </div>
+              <div class="form-group">
+                <label>職種</label>
+                <input type="text" class="ot-role" placeholder="例：看護師">
+              </div>
+              <div class="form-group">
+                <label>氏名</label>
+                <input type="text" class="ot-name" placeholder="氏名">
+              </div>
+              <div class="form-group">
+                <label>残業終了予定時刻</label>
+                <select class="ot-until">
+                <option value="">選択してください</option>
+                <option value="14:00">14:00</option>
+                <option value="14:15">14:15</option>
+                <option value="14:30">14:30</option>
+                <option value="14:45">14:45</option>
+                <option value="15:00">15:00</option>
+                <option value="15:15">15:15</option>
+                <option value="15:30">15:30</option>
+                <option value="15:45">15:45</option>
+                <option value="16:00">16:00</option>
+                <option value="16:15">16:15</option>
+                <option value="16:30">16:30</option>
+                <option value="16:45">16:45</option>
+                <option value="17:00">17:00</option>
+                <option value="17:15">17:15</option>
+                <option value="17:30">17:30</option>
+                <option value="17:45">17:45</option>
+                <option value="18:00">18:00</option>
+                <option value="18:15">18:15</option>
+                <option value="18:30">18:30</option>
+                <option value="18:45">18:45</option>
+                <option value="19:00">19:00</option>
+                <option value="19:15">19:15</option>
+                <option value="19:30">19:30</option>
+                <option value="19:45">19:45</option>
+                <option value="20:00">20:00</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>理由</label>
+                <input type="text" class="ot-reason" placeholder="簡潔に記入">
+              </div>
+            </div>
+          </div>
+          <button type="button" class="btn-add-row">＋ 申請者を追加</button>
+        </div>
+
+      </div>
+
+      <!-- プレビュー -->
+      <div class="preview-card">
+        <div class="preview-label">📋 送信テキストプレビュー</div>
+        <div class="preview-text" id="preview-timeout"></div>
+      </div>
+
+      <!-- ボタン -->
+      <div class="action-area">
+        <button class="btn-copy" disabled>コピー</button>
+        <button class="btn-reset">リセット</button>
+      </div>
+      <div class="copy-guide">
+        ✓ コピーしました。LINE WORKSを開き、対象のグループトークに貼り付けて送信してください。
+      </div>
+
+    </section>
+
+  </main>
+
+  <script src="main.js"></script>
+</body>
+</html>
