@@ -416,7 +416,7 @@ function createPatientRow(idx) {
       <label class="checkbox-item"><input type="checkbox" class="admneed-status" data-label="病棟の返事待ち">病棟の返事待ち</label>
       <label class="checkbox-item"><input type="checkbox" class="admneed-status" data-label="担当医の決定待ち">担当医の決定待ち</label>
       <label class="checkbox-item"><input type="checkbox" class="admneed-status" data-label="入院加療要否検討中">入院加療要否検討中</label>
-      <label class="checkbox-item"><input type="checkbox" class="admneed-status" data-label="対応済み">対応済み</label>
+      <label class="checkbox-item"><input type="checkbox" class="admneed-status" data-label="病棟へのご案内中">病棟へのご案内中</label>
       <label class="checkbox-item"><input type="checkbox" class="admneed-other-chk" data-label="その他">その他</label>
     </div>
     <div class="conditional-area admneed-other-area">
